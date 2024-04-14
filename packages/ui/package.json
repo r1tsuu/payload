@@ -1,13 +1,7 @@
 {
-  "name": "@payloadcms/ui",
+  "name": "@r1tsu/ui",
   "version": "3.0.0-beta.10",
   "type": "module",
-  "homepage": "https://payloadcms.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
-    "directory": "packages/ui"
-  },
   "scripts": {
     "build": "pnpm copyfiles && pnpm build:swc && pnpm build:types",
     "build:swc": "swc ./src -d ./dist --config-file .swcrc",
