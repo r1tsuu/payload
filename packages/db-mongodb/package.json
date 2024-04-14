@@ -39,10 +39,10 @@
     "@types/mongoose-aggregate-paginate-v2": "1.0.9",
     "mongodb": "4.17.1",
     "mongodb-memory-server": "^9",
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "exports": {
     ".": {

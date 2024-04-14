@@ -50,16 +50,16 @@
     "@types/node": "20.12.5",
     "@types/react": "18.2.74",
     "@types/react-dom": "18.2.24",
-    "payload": "workspace:*",
+    "@r1tsu/payload": "workspace:*",
     "@payloadcms/translations": "workspace:*",
-    "@payloadcms/ui": "workspace:*",
-    "@payloadcms/next": "workspace:*"
+    "@r1tsu/ui": "workspace:*",
+    "@r1tsu/next": "workspace:*"
   },
   "peerDependencies": {
     "@payloadcms/translations": "workspace:*",
-    "@payloadcms/ui": "workspace:*",
-    "@payloadcms/next": "workspace:*",
-    "payload": "workspace:*"
+    "@r1tsu/ui": "workspace:*",
+    "@r1tsu/next": "workspace:*",
+    "@r1tsu/payload": "workspace:*"
   },
   "exports": {
     ".": {

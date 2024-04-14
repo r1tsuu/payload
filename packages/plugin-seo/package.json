@@ -33,17 +33,17 @@
   "author": "dev@payloadcms.com",
   "license": "MIT",
   "peerDependencies": {
-    "payload": "workspace:*",
+    "@r1tsu/payload": "workspace:*",
     "react": "^18.0.0",
     "@payloadcms/translations": "workspace:*",
-    "@payloadcms/ui": "workspace:*"
+    "@r1tsu/ui": "workspace:*"
   },
   "devDependencies": {
     "@payloadcms/eslint-config": "workspace:*",
     "@types/react": "18.2.74",
-    "payload": "workspace:*",
+    "@r1tsu/payload": "workspace:*",
     "@payloadcms/translations": "workspace:*",
-    "@payloadcms/ui": "workspace:*",
+    "@r1tsu/ui": "workspace:*",
     "react": "^18.0.0"
   },
   "exports": {

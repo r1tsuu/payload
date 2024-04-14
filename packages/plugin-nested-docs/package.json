@@ -23,10 +23,10 @@
   },
   "devDependencies": {
     "@payloadcms/eslint-config": "workspace:*",
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "exports": {
     ".": {

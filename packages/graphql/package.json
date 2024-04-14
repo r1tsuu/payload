@@ -27,7 +27,7 @@
   "devDependencies": {
     "@payloadcms/eslint-config": "workspace:*",
     "@types/pluralize": "^0.0.33",
-    "payload": "workspace:*",
+    "@r1tsu/payload": "workspace:*",
     "ts-essentials": "7.0.3"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
     "pluralize": "8.0.0"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "publishConfig": {
     "main": "./dist/index.js",

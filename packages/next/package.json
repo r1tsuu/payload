@@ -1,6 +1,6 @@
 {
   "name": "@r1tsu/next",
-  "version": "3.0.0-beta.16",
+  "version": "3.0.0-beta.17",
   "main": "./src/index.js",
   "types": "./src/index.js",
   "type": "module",
@@ -48,7 +48,7 @@
     "css-loader": "^6.10.0",
     "css-minimizer-webpack-plugin": "^6.0.0",
     "mini-css-extract-plugin": "1.6.2",
-    "payload": "workspace:*",
+    "@r1tsu/payload": "workspace:*",
     "postcss-loader": "^8.1.1",
     "postcss-preset-env": "^9.5.0",
     "sass-loader": "^14.1.1",
@@ -62,7 +62,7 @@
     "@dnd-kit/core": "6.0.8",
     "@payloadcms/graphql": "workspace:*",
     "@payloadcms/translations": "workspace:*",
-    "@payloadcms/ui": "workspace:*",
+    "@r1tsu/ui": "workspace:*",
     "@types/busboy": "^1.5.3",
     "busboy": "^1.6.0",
     "deep-equal": "2.2.2",
@@ -80,7 +80,7 @@
   "peerDependencies": {
     "http-status": "1.6.2",
     "next": "^14.2.0-canary.23",
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "publishConfig": {
     "main": "./dist/index.js",

@@ -31,13 +31,13 @@
   "author": "dev@payloadcms.com",
   "license": "MIT",
   "peerDependencies": {
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "devDependencies": {
     "@payloadcms/eslint-config": "workspace:*",
     "@types/express": "^4.17.9",
     "@types/react": "18.2.74",
-    "payload": "workspace:*",
+    "@r1tsu/payload": "workspace:*",
     "react": "^18.0.0"
   },
   "exports": {

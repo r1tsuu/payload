@@ -1,6 +1,6 @@
 {
   "name": "@r1tsu/db-postgres",
-  "version": "3.0.0-beta.11",
+  "version": "3.0.0-beta.17",
   "description": "Not officially supported",
   "repository": {
     "type": "git",
@@ -38,10 +38,10 @@
     "@payloadcms/eslint-config": "workspace:*",
     "@types/pg": "8.10.2",
     "@types/to-snake-case": "1.0.0",
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "@r1tsu/payload": "workspace:*"
   },
   "exports": {
     ".": {
