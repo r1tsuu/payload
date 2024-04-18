@@ -1,8 +1,8 @@
 import type { Collection, PayloadRequest } from 'payload/types'
 
+import getFileType from 'file-type'
 import fsPromises from 'fs/promises'
 import httpStatus from 'http-status'
-import mime from 'mime-types'
 import path from 'path'
 import { APIError } from 'payload/errors'
 
@@ -25,13 +25,6 @@ export const getFile = async ({ collection, filename, req }: Args): Promise<Resp
       )
     }
 
-    if (collection.config.upload.disableLocalStorage && !collection.config.upload.handlers) {
-      throw new APIError(
-        `This collection has local storage disabled: ${collection.config.slug}`,
-        httpStatus.BAD_REQUEST,
-      )
-    }
-
     await checkFileAccess({
       collection,
       filename,
@@ -49,7 +42,7 @@ export const getFile = async ({ collection, filename, req }: Args): Promise<Resp
         })
       }
 
-      return response
+      if (response instanceof Response) return response
     }
 
     const fileDir = collection.config.upload?.staticDir || collection.config.slug
@@ -63,17 +56,18 @@ export const getFile = async ({ collection, filename, req }: Args): Promise<Resp
       'content-length': stats.size + '',
     })
 
-    const contentType = mime.contentType(path.extname(filePath))
-    if (contentType) headers.set('content-type', contentType)
+    const fileTypeResult = await getFileType.fromFile(filePath)
+    if (fileTypeResult?.mime) headers.set('content-type', fileTypeResult.mime)
 
     return new Response(data, {
       headers,
       status: httpStatus.OK,
     })
-  } catch (error) {
+  } catch (err) {
     return routeError({
       collection,
-      err: error,
+      config: req.payload.config,
+      err,
       req,
     })
   }
