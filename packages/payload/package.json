@@ -1,6 +1,6 @@
 {
   "name": "@r1tsu/payload",
-  "version": "3.0.0-beta.22",
+  "version": "3.0.0-beta.23",
   "license": "MIT",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
