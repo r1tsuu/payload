@@ -1,5 +1,5 @@
 {
-  "name": "@payloadcms/db-mongodb",
+  "name": "@r1tsu/db-mongodb",
   "version": "3.0.0-beta.26",
   "description": "The officially supported MongoDB database adapter for Payload",
   "repository": {
