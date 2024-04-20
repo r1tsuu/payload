@@ -1,6 +1,6 @@
 {
   "name": "@r1tsu/ui",
-  "version": "3.0.0-beta.22",
+  "version": "3.0.0-beta.26",
   "type": "module",
   "scripts": {
     "build": "pnpm copyfiles && pnpm build:swc && pnpm build:types",
