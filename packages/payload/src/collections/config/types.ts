@@ -30,6 +30,7 @@ import type { AfterOperationArg, AfterOperationMap } from '../operations/utils.j
 
 export type HookOperationType =
   | 'autosave'
+  | 'count'
   | 'create'
   | 'delete'
   | 'forgotPassword'
@@ -314,7 +315,16 @@ export type CollectionConfig = {
    */
   auth?: IncomingAuthType | boolean
   /** Extension point to add your custom data. */
-  custom?: Record<string, any>
+  custom?: {
+    /**
+     * Available in client bundle.
+     */
+    client?: Record<string, any>
+    /**
+     * Server only.
+     */
+    server?: Record<string, any>
+  }
   /**
    * Default field to sort by in collection list view
    */
@@ -412,6 +422,7 @@ export type Collection = {
   customIDType?: 'number' | 'text'
   graphQL?: {
     JWT: GraphQLObjectType
+    countType: GraphQLObjectType
     mutationInputType: GraphQLNonNull<any>
     paginatedType: GraphQLObjectType
     type: GraphQLObjectType
