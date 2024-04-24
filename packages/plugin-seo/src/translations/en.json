@@ -17,6 +17,7 @@
     "preview": "Preview",
     "previewDescription": "Exact result listings may vary based on content and search relevancy.",
     "tooLong": "Too long",
-    "tooShort": "Too short"
+    "tooShort": "Too short",
+    "generateAi": "AI-generate"
   }
 }

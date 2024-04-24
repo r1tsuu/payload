@@ -29,11 +29,14 @@ export interface PluginConfig {
   }
   fields?: Field[]
   generateDescription?: GenerateDescription
+  generateDescriptionAi?: GenerateDescription
   generateImage?: GenerateImage
   generateTitle?: GenerateTitle
+  generateTitleAi?: GenerateTitle
   generateURL?: GenerateURL
   globals?: string[]
   interfaceName?: string
+  openaiApiKey?: string
   tabbedUI?: boolean
   uploadsCollection?: string
 }

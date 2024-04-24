@@ -38,10 +38,10 @@
     "@payloadcms/eslint-config": "workspace:*",
     "@types/pg": "8.10.2",
     "@types/to-snake-case": "1.0.0",
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "exports": {
     ".": {

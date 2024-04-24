@@ -204,7 +204,7 @@ importers:
         version: 9.1.8
       next:
         specifier: ^14.3.0-canary.7
-        version: 14.3.0-canary.7(@babel/core@7.24.4)(@playwright/test@1.43.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 14.3.0-canary.7(@babel/core@7.24.4)(@playwright/test@1.43.0)(react-dom@18.2.0)(react@18.2.0)(sass@1.74.1)
       node-mocks-http:
         specifier: ^1.14.1
         version: 1.14.1
@@ -380,6 +380,9 @@ importers:
       mongoose-paginate-v2:
         specifier: 1.7.22
         version: 1.7.22
+      payload:
+        specifier: ../payload
+        version: link:../payload
       prompts:
         specifier: 2.4.2
         version: 2.4.2
@@ -390,6 +393,9 @@ importers:
       '@payloadcms/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config-payload
+      '@r1tsu/payload':
+        specifier: ../payload
+        version: link:../payload
       '@types/mongoose-aggregate-paginate-v2':
         specifier: 1.0.9
         version: 1.0.9
@@ -399,9 +405,6 @@ importers:
       mongodb-memory-server:
         specifier: ^9.0
         version: 9.1.8
-      payload:
-        specifier: workspace:*
-        version: link:../payload
 
   packages/db-postgres:
     dependencies:
@@ -440,7 +443,7 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/email-nodemailer:
@@ -453,7 +456,7 @@ importers:
         specifier: 6.4.14
         version: 6.4.14
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/eslint-config-payload:
@@ -565,7 +568,7 @@ importers:
         specifier: ^1.22.0
         version: 1.22.0(graphql@16.8.1)
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       ts-essentials:
         specifier: 7.0.3
@@ -577,7 +580,7 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-payload
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/live-preview-react:
@@ -596,7 +599,7 @@ importers:
         specifier: 18.2.74
         version: 18.2.74
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/live-preview-vue:
@@ -609,7 +612,7 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-payload
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       vue:
         specifier: ^3.0.0
@@ -624,10 +627,10 @@ importers:
         specifier: workspace:*
         version: link:../graphql
       '@payloadcms/translations':
-        specifier: workspace:*
+        specifier: ../translations
         version: link:../translations
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../ui
         version: link:../ui
       '@types/busboy':
         specifier: ^1.5.3
@@ -706,7 +709,7 @@ importers:
         specifier: 1.6.2
         version: 1.6.2(webpack@5.91.0)
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       postcss-loader:
         specifier: ^8.1.1
@@ -736,7 +739,7 @@ importers:
   packages/payload:
     dependencies:
       '@payloadcms/translations':
-        specifier: workspace:*
+        specifier: ../translations
         version: link:../translations
       '@swc-node/core':
         specifier: ^1.13.0
@@ -990,7 +993,7 @@ importers:
         specifier: 6.4.14
         version: 6.4.14
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       ts-jest:
         specifier: ^29.1.0
@@ -1027,13 +1030,13 @@ importers:
         specifier: ^0.22.3
         version: 0.22.3
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/plugin-form-builder:
     dependencies:
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../ui
         version: link:../ui
       deepmerge:
         specifier: ^4.2.2
@@ -1064,7 +1067,7 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       react:
         specifier: ^18.2.0
@@ -1079,7 +1082,7 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-payload
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/plugin-redirects:
@@ -1094,7 +1097,7 @@ importers:
         specifier: 18.2.74
         version: 18.2.74
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       react:
         specifier: ^18.2.0
@@ -1103,7 +1106,7 @@ importers:
   packages/plugin-search:
     dependencies:
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../ui
         version: link:../ui
       deepmerge:
         specifier: 4.3.1
@@ -1119,7 +1122,7 @@ importers:
         specifier: 18.2.74
         version: 18.2.74
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       react:
         specifier: ^18.2.0
@@ -1171,7 +1174,7 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       ts-jest:
         specifier: ^29.1.0
@@ -1186,16 +1189,19 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-payload
       '@payloadcms/translations':
-        specifier: workspace:*
+        specifier: ../translations
         version: link:../translations
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../ui
         version: link:../ui
       '@types/react':
         specifier: 18.2.74
         version: 18.2.74
+      openai:
+        specifier: ^4.30.0
+        version: 4.38.3
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       react:
         specifier: ^18.2.0
@@ -1204,7 +1210,7 @@ importers:
   packages/plugin-stripe:
     dependencies:
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../ui
         version: link:../ui
       lodash.get:
         specifier: ^4.4.2
@@ -1232,7 +1238,7 @@ importers:
         specifier: ^9.0.0
         version: 9.0.8
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       prettier:
         specifier: ^2.7.1
@@ -1311,13 +1317,13 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-payload
       '@payloadcms/next':
-        specifier: workspace:*
+        specifier: ../next
         version: link:../next
       '@payloadcms/translations':
-        specifier: workspace:*
+        specifier: ../translations
         version: link:../translations
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../ui
         version: link:../ui
       '@types/json-schema':
         specifier: 7.0.15
@@ -1332,7 +1338,7 @@ importers:
         specifier: 18.2.24
         version: 18.2.24
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/richtext-slate:
@@ -1341,7 +1347,7 @@ importers:
         specifier: 2.0.2
         version: 2.0.2(react-dom@18.2.0)(react@18.2.0)
       '@payloadcms/translations':
-        specifier: workspace:*
+        specifier: ../translations
         version: link:../translations
       is-hotkey:
         specifier: 0.2.0
@@ -1366,7 +1372,7 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-payload
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../ui
         version: link:../ui
       '@types/node':
         specifier: 20.12.5
@@ -1375,7 +1381,7 @@ importers:
         specifier: 18.2.74
         version: 18.2.74
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/storage-azure:
@@ -1397,7 +1403,7 @@ importers:
         specifier: ^1.2.7
         version: 1.2.7
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/storage-gcs:
@@ -1410,7 +1416,7 @@ importers:
         version: link:../plugin-cloud-storage
     devDependencies:
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/storage-s3:
@@ -1426,7 +1432,7 @@ importers:
         version: link:../plugin-cloud-storage
     devDependencies:
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/storage-vercel-blob:
@@ -1439,7 +1445,7 @@ importers:
         version: 0.22.3
     devDependencies:
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
 
   packages/translations:
@@ -1481,7 +1487,7 @@ importers:
         specifier: 4.5.1
         version: 4.5.1(monaco-editor@0.38.0)(react-dom@18.2.0)(react@18.2.0)
       '@payloadcms/translations':
-        specifier: workspace:*
+        specifier: ../translations
         version: link:../translations
       body-scroll-lock:
         specifier: 4.0.0-beta.0
@@ -1503,7 +1509,7 @@ importers:
         version: 2.3.0
       next:
         specifier: ^14.3.0-canary.7
-        version: 14.3.0-canary.7(@babel/core@7.24.4)(@playwright/test@1.43.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 14.3.0-canary.7(@babel/core@7.24.4)(@playwright/test@1.43.0)(react-dom@18.2.0)(react@18.2.0)(sass@1.74.1)
       object-to-formdata:
         specifier: 4.5.1
         version: 4.5.1
@@ -1566,7 +1572,7 @@ importers:
         specifier: 1.6.2
         version: 1.6.2(webpack@5.91.0)
       payload:
-        specifier: workspace:*
+        specifier: ../payload
         version: link:../payload
       postcss-loader:
         specifier: ^8.1.1
@@ -1596,10 +1602,10 @@ importers:
   test:
     devDependencies:
       '@payloadcms/db-mongodb':
-        specifier: workspace:*
+        specifier: ../packages/db-mongodb
         version: link:../packages/db-mongodb
       '@payloadcms/db-postgres':
-        specifier: workspace:*
+        specifier: ../packages/db-postgres
         version: link:../packages/db-postgres
       '@payloadcms/email-nodemailer':
         specifier: workspace:*
@@ -1617,7 +1623,7 @@ importers:
         specifier: workspace:*
         version: link:../packages/live-preview-react
       '@payloadcms/next':
-        specifier: workspace:*
+        specifier: ../packages/next
         version: link:../packages/next
       '@payloadcms/plugin-cloud':
         specifier: workspace:*
@@ -1641,7 +1647,7 @@ importers:
         specifier: workspace:*
         version: link:../packages/plugin-sentry
       '@payloadcms/plugin-seo':
-        specifier: workspace:*
+        specifier: ../packages/plugin-seo
         version: link:../packages/plugin-seo
       '@payloadcms/plugin-stripe':
         specifier: workspace:*
@@ -1665,10 +1671,10 @@ importers:
         specifier: workspace:*
         version: link:../packages/storage-vercel-blob
       '@payloadcms/translations':
-        specifier: workspace:*
+        specifier: ../packages/translations
         version: link:../packages/translations
       '@payloadcms/ui':
-        specifier: workspace:*
+        specifier: ../packages/ui
         version: link:../packages/ui
       comment-json:
         specifier: ^4.2.3
@@ -1689,7 +1695,7 @@ importers:
         specifier: 1.6.2
         version: 1.6.2
       payload:
-        specifier: workspace:*
+        specifier: ../packages/payload
         version: link:../packages/payload
       tempy:
         specifier: ^1.0.1
@@ -6056,6 +6062,12 @@ packages:
       '@types/node': 20.12.5
       form-data: 3.0.1
 
+  /@types/node@18.19.31:
+    resolution: {integrity: sha512-ArgCD39YpyyrtFKIqMDvjz79jto5fcI/SVUs2HwB+f0dAzq68yqOdyaSivLiLugSziTpNXLQrVb7RZFmdZzbhA==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
   /@types/node@20.12.5:
     resolution: {integrity: sha512-BD+BjQ9LS/D8ST9p5uqBxghlN+S42iuNxjsUGjeZobe/ciXzk2qb1B6IXc6AnRLS+yFJRpN2IPEHMzwspfDJNw==}
     dependencies:
@@ -6845,6 +6857,13 @@ packages:
       debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
+
+  /agentkeepalive@4.5.0:
+    resolution: {integrity: sha512-5GG/5IbQQpC9FpkRGsSvZI5QYeSCzlJHdpBQntCsuTOxhKD8lqKhrleg2Yi7yvMIf82Ycmmqln9U8V9qwEiJew==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      humanize-ms: 1.2.1
+    dev: true
 
   /aggregate-error@3.1.0:
     resolution: {integrity: sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==}
@@ -9953,6 +9972,10 @@ packages:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
 
+  /form-data-encoder@1.7.2:
+    resolution: {integrity: sha512-qfqtYan3rxrnCk1VYaA4H+Ms9xdpPqvLZa6xmMgFvhO32x7/3J/ExcTd6qpxM0vH2GdMI+poehyBZvqfMTto8A==}
+    dev: true
+
   /form-data@2.5.1:
     resolution: {integrity: sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==}
     engines: {node: '>= 0.12'}
@@ -9976,6 +9999,14 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+
+  /formdata-node@4.4.1:
+    resolution: {integrity: sha512-0iirZp3uVDjVGt9p49aTaqjk84TrglENEDuqfdlZQ1roC9CWlPk6Avf8EEnZNcAqPonwkG35x4n3ww/1THYAeQ==}
+    engines: {node: '>= 12.20'}
+    dependencies:
+      node-domexception: 1.0.0
+      web-streams-polyfill: 4.0.0-beta.3
+    dev: true
 
   /formdata-polyfill@4.0.10:
     resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
@@ -10540,6 +10571,12 @@ packages:
   /human-signals@4.3.1:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
+    dev: true
+
+  /humanize-ms@1.2.1:
+    resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
+    dependencies:
+      ms: 2.1.3
     dev: true
 
   /husky@8.0.3:
@@ -12400,48 +12437,6 @@ packages:
   /next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  /next@14.3.0-canary.7(@babel/core@7.24.4)(@playwright/test@1.43.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-loPrWTCvHvZgOy3rgL9+2WpxNDxlRNt462ihqm/DUuyK8LUZV1F4H920YTAu1wEiYC8RrpNUbpz8K7KRYAkQiA==}
-    engines: {node: '>=18.17.0'}
-    hasBin: true
-    peerDependencies:
-      '@opentelemetry/api': ^1.1.0
-      '@playwright/test': ^1.41.2
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      sass: ^1.3.0
-    peerDependenciesMeta:
-      '@opentelemetry/api':
-        optional: true
-      '@playwright/test':
-        optional: true
-      sass:
-        optional: true
-    dependencies:
-      '@next/env': 14.3.0-canary.7
-      '@playwright/test': 1.43.0
-      '@swc/helpers': 0.5.5
-      busboy: 1.6.0
-      caniuse-lite: 1.0.30001607
-      graceful-fs: 4.2.11
-      postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(@babel/core@7.24.4)(react@18.2.0)
-    optionalDependencies:
-      '@next/swc-darwin-arm64': 14.3.0-canary.7
-      '@next/swc-darwin-x64': 14.3.0-canary.7
-      '@next/swc-linux-arm64-gnu': 14.3.0-canary.7
-      '@next/swc-linux-arm64-musl': 14.3.0-canary.7
-      '@next/swc-linux-x64-gnu': 14.3.0-canary.7
-      '@next/swc-linux-x64-musl': 14.3.0-canary.7
-      '@next/swc-win32-arm64-msvc': 14.3.0-canary.7
-      '@next/swc-win32-ia32-msvc': 14.3.0-canary.7
-      '@next/swc-win32-x64-msvc': 14.3.0-canary.7
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-
   /next@14.3.0-canary.7(@babel/core@7.24.4)(@playwright/test@1.43.0)(react-dom@18.2.0)(react@18.2.0)(sass@1.74.1):
     resolution: {integrity: sha512-loPrWTCvHvZgOy3rgL9+2WpxNDxlRNt462ihqm/DUuyK8LUZV1F4H920YTAu1wEiYC8RrpNUbpz8K7KRYAkQiA==}
     engines: {node: '>=18.17.0'}
@@ -12484,7 +12479,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
-    dev: false
 
   /node-abi@3.57.0:
     resolution: {integrity: sha512-Dp+A9JWxRaKuHP35H77I4kCKesDy5HUDEmScia2FyncMTOXASMyg251F5PhFoDA5uqBrDDffiLpbqnrZmNXW+g==}
@@ -12768,6 +12762,22 @@ packages:
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       is-wsl: 3.1.0
+    dev: true
+
+  /openai@4.38.3:
+    resolution: {integrity: sha512-mIL9WtrFNOanpx98mJ+X/wkoepcxdqqu0noWFoNQHl/yODQ47YM7NEYda7qp8JfjqpLFVxY9mQhshoS/Fqac0A==}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.19.31
+      '@types/node-fetch': 2.6.4
+      abort-controller: 3.0.0
+      agentkeepalive: 4.5.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+      web-streams-polyfill: 3.3.3
+    transitivePeerDependencies:
+      - encoding
     dev: true
 
   /opener@1.5.2:
@@ -16184,6 +16194,11 @@ packages:
   /web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
     engines: {node: '>= 8'}
+
+  /web-streams-polyfill@4.0.0-beta.3:
+    resolution: {integrity: sha512-QW95TCTaHmsYfHDybGMwO5IJIM93I/6vTRk+daHTWFPhwh+C8Cg7j7XyKrwrj8Ib6vYXe0ocYNrmzY4xAAN6ug==}
+    engines: {node: '>= 14'}
+    dev: true
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}

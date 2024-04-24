@@ -25,7 +25,7 @@
     "nodemailer": "6.9.10"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "exports": {
     ".": {
@@ -53,7 +53,7 @@
     "dist"
   ],
   "devDependencies": {
-    "payload": "workspace:*",
+    "payload": "../payload",
     "@types/nodemailer": "6.4.14"
   }
 }

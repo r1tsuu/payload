@@ -31,16 +31,16 @@
     "slate-react": "0.92.0"
   },
   "devDependencies": {
-    "@payloadcms/ui": "workspace:*",
+    "@payloadcms/ui": "../ui",
     "@payloadcms/eslint-config": "workspace:*",
     "@types/node": "20.12.5",
     "@types/react": "18.2.74",
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "peerDependencies": {
-    "payload": "workspace:*",
-    "@payloadcms/translations": "workspace:*",
-    "@payloadcms/ui": "workspace:*"
+    "payload": "../payload",
+    "@payloadcms/translations": "../translations",
+    "@payloadcms/ui": "../ui"
   },
   "exports": {
     ".": {

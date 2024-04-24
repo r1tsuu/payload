@@ -22,11 +22,11 @@
     "test": "echo \"No tests available.\""
   },
   "peerDependencies": {
-    "payload": "workspace:*",
+    "payload": "../payload",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "@payloadcms/ui": "workspace:*",
+    "@payloadcms/ui": "../ui",
     "deepmerge": "^4.2.2",
     "escape-html": "^1.0.3"
   },
@@ -38,7 +38,7 @@
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "nodemon": "3.0.3",
-    "payload": "workspace:*",
+    "payload": "../payload",
     "react": "^18.0.0",
     "ts-node": "10.9.1"
   },

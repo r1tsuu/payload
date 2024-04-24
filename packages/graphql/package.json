@@ -28,7 +28,7 @@
     "@payloadcms/eslint-config": "workspace:*",
     "@types/pluralize": "^0.0.33",
     "graphql-http": "^1.22.0",
-    "payload": "workspace:*",
+    "payload": "../payload",
     "ts-essentials": "7.0.3"
   },
   "dependencies": {
@@ -36,7 +36,7 @@
     "pluralize": "8.0.0"
   },
   "peerDependencies": {
-    "payload": "workspace:*",
+    "payload": "../payload",
     "graphql": "^16.8.1"
   },
   "publishConfig": {

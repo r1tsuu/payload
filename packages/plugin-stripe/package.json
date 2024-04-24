@@ -33,10 +33,10 @@
   "author": "dev@payloadcms.com",
   "license": "MIT",
   "peerDependencies": {
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "dependencies": {
-    "@payloadcms/ui": "workspace:*",
+    "@payloadcms/ui": "../ui",
     "lodash.get": "^4.4.2",
     "stripe": "^10.2.0",
     "uuid": "^9.0.0"
@@ -47,7 +47,7 @@
     "@types/lodash.get": "^4.4.7",
     "@types/react": "18.2.74",
     "@types/uuid": "^9.0.0",
-    "payload": "workspace:*",
+    "payload": "../payload",
     "prettier": "^2.7.1",
     "react": "^18.0.0",
     "webpack": "^5.78.0"

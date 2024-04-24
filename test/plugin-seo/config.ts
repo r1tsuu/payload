@@ -56,9 +56,17 @@ export default buildConfigWithDefaults({
         },
       ],
       generateDescription: ({ doc }: any) => doc?.excerpt?.value || 'generated description',
+      generateDescriptionAi: ({ doc }: any) => {
+        const value = doc?.excerpt?.value || 'generated description'
+        return `Generate me SEO meta description with this content - ${value} `
+      },
       generateTitle: (data: any) => `Website.com — ${data?.doc?.title?.value}`,
+      generateTitleAi: (data: any) => {
+        return `Generate me SEO meta title with this content - Website.com — ${data?.doc?.title?.value}`
+      },
       generateURL: ({ doc, locale }: any) =>
         `https://yoursite.com/${locale ? locale + '/' : ''}${doc?.slug?.value || ''}`,
+      openaiApiKey: 'some key',
       tabbedUI: true,
       uploadsCollection: 'media',
     }),

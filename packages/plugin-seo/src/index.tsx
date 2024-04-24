@@ -1,6 +1,7 @@
 import type { Config } from 'payload/config'
 import type { Field, GroupField, TabsField, TextField } from 'payload/types'
 
+import OpenAI from 'openai'
 import { deepMerge } from 'payload/utilities'
 import React from 'react'
 
@@ -15,6 +16,7 @@ import type {
 import { MetaDescription } from './fields/MetaDescription.js'
 import { MetaImage } from './fields/MetaImage.js'
 import { MetaTitle } from './fields/MetaTitle.js'
+import { openaiMessage } from './openai/message.js'
 import { translations } from './translations/index.js'
 import { Overview } from './ui/Overview.js'
 import { Preview } from './ui/Preview.js'
@@ -45,6 +47,10 @@ const seo =
                 Field: (props) => (
                   <MetaTitle
                     {...props}
+                    hasGenerateTitleAi={
+                      typeof pluginConfig?.generateTitleAi === 'function' &&
+                      pluginConfig.openaiApiKey
+                    }
                     hasGenerateTitleFn={typeof pluginConfig?.generateTitle === 'function'}
                   />
                 ),
@@ -61,6 +67,10 @@ const seo =
                 Field: (props) => (
                   <MetaDescription
                     {...props}
+                    hasGenerateDescriptionAi={
+                      typeof pluginConfig.generateDescriptionAi === 'function' &&
+                      pluginConfig.openaiApiKey
+                    }
                     hasGenerateDescriptionFn={
                       typeof pluginConfig?.generateDescription === 'function'
                     }
@@ -207,6 +217,31 @@ const seo =
         },
         {
           handler: async (req) => {
+            if (!pluginConfig.openaiApiKey)
+              return new Response(JSON.stringify({ message: 'Something went wrong' }), {
+                status: 500,
+              })
+
+            const args: Parameters<GenerateTitle>[0] =
+              req.data as unknown as Parameters<GenerateTitle>[0]
+
+            const content = pluginConfig.generateTitleAi
+              ? await pluginConfig.generateTitleAi(args)
+              : ''
+
+            const aiResult = await openaiMessage({
+              apiKey: pluginConfig.openaiApiKey,
+              content,
+              req,
+            })
+
+            return Response.json({ result: aiResult }, { status: 200 })
+          },
+          method: 'post',
+          path: '/plugin-seo/generate-title-ai',
+        },
+        {
+          handler: async (req) => {
             const args: Parameters<GenerateDescription>[0] =
               req.data as unknown as Parameters<GenerateDescription>[0]
             const result = pluginConfig.generateDescription
@@ -216,6 +251,31 @@ const seo =
           },
           method: 'post',
           path: '/plugin-seo/generate-description',
+        },
+        {
+          handler: async (req) => {
+            if (!pluginConfig.openaiApiKey)
+              return new Response(JSON.stringify({ message: 'Something went wrong' }), {
+                status: 500,
+              })
+
+            const args: Parameters<GenerateDescription>[0] =
+              req.data as unknown as Parameters<GenerateDescription>[0]
+
+            const content = pluginConfig.generateDescriptionAi
+              ? await pluginConfig.generateDescriptionAi(args)
+              : ''
+
+            const aiResult = await openaiMessage({
+              apiKey: pluginConfig.openaiApiKey,
+              content,
+              req,
+            })
+
+            return Response.json({ result: aiResult }, { status: 200 })
+          },
+          method: 'post',
+          path: '/plugin-seo/generate-description-ai',
         },
         {
           handler: async (req) => {

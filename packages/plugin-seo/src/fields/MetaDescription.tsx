@@ -22,12 +22,20 @@ const { maxLength, minLength } = defaults.description
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type MetaDescriptionProps = FormFieldBase & {
+  hasGenerateDescriptionAi: boolean
   hasGenerateDescriptionFn: boolean
   path: string
 }
 
 export const MetaDescription: React.FC<MetaDescriptionProps> = (props) => {
-  const { CustomLabel, hasGenerateDescriptionFn, labelProps, path, required } = props
+  const {
+    CustomLabel,
+    hasGenerateDescriptionAi,
+    hasGenerateDescriptionFn,
+    labelProps,
+    path,
+    required,
+  } = props
   const { path: pathFromContext } = useFieldProps()
 
   const { t } = useTranslation()
@@ -63,6 +71,27 @@ export const MetaDescription: React.FC<MetaDescriptionProps> = (props) => {
     setValue(generatedDescription || '')
   }, [fields, setValue, hasGenerateDescriptionFn, locale, docInfo])
 
+  const regenerateDescriptionAi = useCallback(async () => {
+    if (!hasGenerateDescriptionAi) return
+
+    const genDescriptionResponse = await fetch('/api/plugin-seo/generate-description-ai', {
+      body: JSON.stringify({
+        ...docInfo,
+        doc: { ...fields },
+        locale: typeof locale === 'object' ? locale?.code : locale,
+      } satisfies Parameters<GenerateDescription>[0]),
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
+
+    const { result: generatedDescription } = await genDescriptionResponse.json()
+
+    setValue(generatedDescription || '')
+  }, [fields, setValue, hasGenerateDescriptionAi, locale, docInfo])
+
   return (
     <div
       style={{
@@ -94,6 +123,26 @@ export const MetaDescription: React.FC<MetaDescriptionProps> = (props) => {
                 type="button"
               >
                 {t('plugin-seo:autoGenerate')}
+              </button>
+            </React.Fragment>
+          )}
+          {hasGenerateDescriptionAi && (
+            <React.Fragment>
+              &nbsp; &mdash; &nbsp;
+              <button
+                onClick={regenerateDescriptionAi}
+                style={{
+                  background: 'none',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  color: 'currentcolor',
+                  cursor: 'pointer',
+                  padding: 0,
+                  textDecoration: 'underline',
+                }}
+                type="button"
+              >
+                {t('plugin-seo:generateAi')}
               </button>
             </React.Fragment>
           )}

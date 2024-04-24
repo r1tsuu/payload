@@ -49,7 +49,7 @@
     "css-minimizer-webpack-plugin": "^6.0.0",
     "file-type": "16.5.4",
     "mini-css-extract-plugin": "1.6.2",
-    "payload": "workspace:*",
+    "payload": "../payload",
     "postcss-loader": "^8.1.1",
     "postcss-preset-env": "^9.5.0",
     "sass-loader": "^14.1.1",
@@ -62,8 +62,8 @@
   "dependencies": {
     "@dnd-kit/core": "6.0.8",
     "@payloadcms/graphql": "workspace:*",
-    "@payloadcms/translations": "workspace:*",
-    "@payloadcms/ui": "workspace:*",
+    "@payloadcms/translations": "../translations",
+    "@payloadcms/ui": "../ui",
     "@types/busboy": "^1.5.3",
     "busboy": "^1.6.0",
     "deep-equal": "2.2.2",
@@ -81,7 +81,7 @@
     "file-type": "16.5.4",
     "http-status": "1.6.2",
     "next": "^14.3.0-canary.7",
-    "payload": "workspace:*",
+    "payload": "../payload",
     "graphql": "^16.8.1"
   },
   "publishConfig": {

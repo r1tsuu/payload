@@ -24,11 +24,13 @@ const { maxLength, minLength } = defaults.title
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type MetaTitleProps = FormFieldBase & {
+  hasGenerateTitleAi: boolean
   hasGenerateTitleFn: boolean
 }
 
 export const MetaTitle: React.FC<MetaTitleProps> = (props) => {
-  const { CustomLabel, hasGenerateTitleFn, labelProps, path, required } = props || {}
+  const { CustomLabel, hasGenerateTitleAi, hasGenerateTitleFn, labelProps, path, required } =
+    props || {}
   const { path: pathFromContext } = useFieldProps()
 
   const { t } = useTranslation()
@@ -64,6 +66,27 @@ export const MetaTitle: React.FC<MetaTitleProps> = (props) => {
     setValue(generatedTitle || '')
   }, [fields, setValue, hasGenerateTitleFn, locale, docInfo])
 
+  const regenerateTitleAi = useCallback(async () => {
+    if (!hasGenerateTitleAi) return
+
+    const genTitleResponse = await fetch('/api/plugin-seo/generate-title-ai', {
+      body: JSON.stringify({
+        ...docInfo,
+        doc: { ...fields },
+        locale: typeof locale === 'object' ? locale?.code : locale,
+      } satisfies Parameters<GenerateTitle>[0]),
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
+
+    const { result: generatedTitle } = await genTitleResponse.json()
+
+    setValue(generatedTitle || '')
+  }, [fields, setValue, hasGenerateTitleAi, locale, docInfo])
+
   return (
     <div
       style={{
@@ -95,6 +118,26 @@ export const MetaTitle: React.FC<MetaTitleProps> = (props) => {
                 type="button"
               >
                 {t('plugin-seo:autoGenerate')}
+              </button>
+            </React.Fragment>
+          )}
+          {hasGenerateTitleAi && (
+            <React.Fragment>
+              &nbsp; &mdash; &nbsp;
+              <button
+                onClick={regenerateTitleAi}
+                style={{
+                  background: 'none',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  color: 'currentcolor',
+                  cursor: 'pointer',
+                  padding: 0,
+                  textDecoration: 'underline',
+                }}
+                type="button"
+              >
+                {t('plugin-seo:generateAi')}
               </button>
             </React.Fragment>
           )}

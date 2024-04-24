@@ -44,10 +44,10 @@
     "@google-cloud/storage": "^7.7.0"
   },
   "devDependencies": {
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "engines": {
     "node": ">=18.20.2"

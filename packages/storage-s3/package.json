@@ -45,10 +45,10 @@
     "@aws-sdk/lib-storage": "^3.525.0"
   },
   "devDependencies": {
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "peerDependencies": {
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "engines": {
     "node": ">=18.20.2"

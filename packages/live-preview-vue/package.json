@@ -27,7 +27,7 @@
   "devDependencies": {
     "@payloadcms/eslint-config": "workspace:*",
     "vue": "^3.0.0",
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "peerDependencies": {
     "vue": "^3.0.0"

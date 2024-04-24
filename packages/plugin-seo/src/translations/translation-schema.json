@@ -60,6 +60,10 @@
         },
         "tooShort": {
           "type": "string"
+        },
+
+        "generateAi": {
+          "type": "string"
         }
       },
       "required": [
@@ -79,7 +83,8 @@
         "noImage",
         "checksPassing",
         "preview",
-        "previewDescription"
+        "previewDescription",
+        "generateAi"
       ]
     }
   },

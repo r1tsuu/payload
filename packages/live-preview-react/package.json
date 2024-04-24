@@ -27,7 +27,7 @@
   "devDependencies": {
     "@payloadcms/eslint-config": "workspace:*",
     "@types/react": "18.2.74",
-    "payload": "workspace:*"
+    "payload": "../payload"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"

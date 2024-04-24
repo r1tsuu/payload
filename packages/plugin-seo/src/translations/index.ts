@@ -10,6 +10,7 @@ export const translations = {
       charactersToGo: '{{characters}} to go',
       charactersTooMany: '{{characters}} too many',
       checksPassing: '{{current}}/{{max}} checks are passing',
+      generateAi: 'AI-generate',
       good: 'Good',
       imageAutoGenerationTip: 'Auto-generation will retrieve the selected hero image.',
       lengthTipDescription:
@@ -34,6 +35,7 @@ export const translations = {
       charactersToGo: '{{characters}} letras sobrantes',
       charactersTooMany: '{{characters}} letras demasiados',
       checksPassing: '{{current}}/{{max}} las comprobaciones están pasando',
+      generateAi: 'AI-generate',
       good: 'Bien',
       imageAutoGenerationTip: 'La autogeneración recuperará la imagen de héroe seleccionada.',
       lengthTipDescription:
@@ -59,6 +61,7 @@ export const translations = {
       charactersToGo: '{{characters}} باقی مانده',
       charactersTooMany: '{{characters}} بیش از حد',
       checksPassing: '{{current}}/{{max}} بررسی‌ها با موفقیت انجام شده است',
+      generateAi: 'AI-generate',
       good: 'خوب',
       imageAutoGenerationTip:
         'این قابلیت، تصویر فعلی بارگذاری شده در مجموعه محتوای شما را بازیابی می‌کند',
@@ -85,6 +88,7 @@ export const translations = {
       charactersToGo: '{{characters}} à ajouter',
       charactersTooMany: '{{characters}} en trop',
       checksPassing: '{{current}}/{{max}} vérifications réussies',
+      generateAi: 'AI-generate',
       good: 'Bien',
       imageAutoGenerationTip: "L'auto-génération récupérera l'image principale sélectionnée.",
       lengthTipDescription:
@@ -110,6 +114,7 @@ export const translations = {
       charactersToGo: '{{characters}} igjen',
       charactersTooMany: '{{characters}} for mange',
       checksPassing: '{{current}}/{{max}} sjekker bestått',
+      generateAi: 'AI-generate',
       good: 'Bra',
       imageAutoGenerationTip: 'Auto-generering vil hente det valgte hero-bildet.',
       lengthTipDescription:
@@ -135,6 +140,7 @@ export const translations = {
       charactersToGo: 'pozostało {{characters}} znaków',
       charactersTooMany: '{{characters}} znaków za dużo',
       checksPassing: '{{current}}/{{max}} testów zakończonych pomyślnie',
+      generateAi: 'AI-generate',
       good: 'Dobrze',
       imageAutoGenerationTip: 'Automatyczne generowanie pobierze wybrany główny obraz.',
       lengthTipDescription:
@@ -160,13 +166,17 @@ export const translations = {
       charactersToGo: ' на {{characters}} символів коротше',
       charactersTooMany: 'на {{characters}} символів довше',
       checksPassing: '{{current}}/{{max}} перевірок пройдено',
+      generateAi: 'AI-генерація',
       good: 'Чудово',
       imageAutoGenerationTip: 'Автоматична генерація використає зображення з головного блоку',
-      lengthTipDescription: 'Має бути від {{minLength}} до {{maxLength}} символів. Щоб дізнатися, як писати якісні метаописи — перегляньте ',
-      lengthTipTitle: 'Має бути від {{minLength}} до {{maxLength}} символів. Щоб дізнатися, як писати якісні метазаголовки — перегляньте ',
+      lengthTipDescription:
+        'Має бути від {{minLength}} до {{maxLength}} символів. Щоб дізнатися, як писати якісні метаописи — перегляньте ',
+      lengthTipTitle:
+        'Має бути від {{minLength}} до {{maxLength}} символів. Щоб дізнатися, як писати якісні метазаголовки — перегляньте ',
       noImage: 'Немає зображення',
       preview: 'Попередній перегляд',
-      previewDescription: 'Реальне відображення може відрізнятися в залежності від вмісту та релевантності пошуку.',
+      previewDescription:
+        'Реальне відображення може відрізнятися в залежності від вмісту та релевантності пошуку.',
       tooLong: 'Задовгий',
       tooShort: 'Закороткий',
     },
