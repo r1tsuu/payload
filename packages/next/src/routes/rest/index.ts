@@ -12,6 +12,7 @@ import type {
 } from './types.js'
 
 import { createPayloadRequest } from '../../utilities/createPayloadRequest.js'
+import { headersWithCors } from '../../utilities/headersWithCors.js'
 import { access } from './auth/access.js'
 import { forgotPassword } from './auth/forgotPassword.js'
 import { init } from './auth/init.js'
@@ -148,13 +149,48 @@ const handleCustomEndpoints = ({
   return null
 }
 
-const RouteNotFoundResponse = (slug: string[]) =>
+const RouteNotFoundResponse = ({ slug, req }: { req: PayloadRequest; slug: string[] }) =>
   Response.json(
     {
       message: `Route Not Found: "${slug.join('/')}"`,
     },
-    { status: httpStatus.NOT_FOUND },
+    {
+      headers: headersWithCors({
+        headers: new Headers(),
+        req,
+      }),
+      status: httpStatus.NOT_FOUND,
+    },
   )
+
+export const OPTIONS =
+  (config: Promise<SanitizedConfig> | SanitizedConfig) => async (request: Request) => {
+    let req: PayloadRequest
+
+    try {
+      req = await createPayloadRequest({
+        config,
+        request,
+      })
+
+      return Response.json(
+        {},
+        {
+          headers: headersWithCors({
+            headers: new Headers(),
+            req,
+          }),
+          status: 200,
+        },
+      )
+    } catch (error) {
+      return routeError({
+        config,
+        err: error,
+        req: req || request,
+      })
+    }
+  }
 
 export const GET =
   (config: Promise<SanitizedConfig> | SanitizedConfig) =>
@@ -302,13 +338,16 @@ export const GET =
       })
       if (customEndpointResponse) return customEndpointResponse
 
-      return RouteNotFoundResponse(slug)
+      return RouteNotFoundResponse({
+        slug,
+        req,
+      })
     } catch (error) {
       return routeError({
         collection,
         config,
         err: error,
-        req,
+        req: req || request,
       })
     }
   }
@@ -445,13 +484,16 @@ export const POST =
       })
       if (customEndpointResponse) return customEndpointResponse
 
-      return RouteNotFoundResponse(slug)
+      return RouteNotFoundResponse({
+        slug,
+        req,
+      })
     } catch (error) {
       return routeError({
         collection,
         config,
         err: error,
-        req,
+        req: req || request,
       })
     }
   }
@@ -515,13 +557,16 @@ export const DELETE =
       })
       if (customEndpointResponse) return customEndpointResponse
 
-      return RouteNotFoundResponse(slug)
+      return RouteNotFoundResponse({
+        slug,
+        req,
+      })
     } catch (error) {
       return routeError({
         collection,
         config,
         err: error,
-        req,
+        req: req || request,
       })
     }
   }
@@ -585,13 +630,16 @@ export const PATCH =
       })
       if (customEndpointResponse) return customEndpointResponse
 
-      return RouteNotFoundResponse(slug)
+      return RouteNotFoundResponse({
+        slug,
+        req,
+      })
     } catch (error) {
       return routeError({
         collection,
         config,
         err: error,
-        req,
+        req: req || request,
       })
     }
   }
