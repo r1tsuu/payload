@@ -56,6 +56,7 @@ export default buildConfigWithDefaults({
         },
       ],
       generateDescription: ({ doc }: any) => doc?.excerpt?.value || 'generated description',
+      generateImage: ({ doc }: any) => doc?.photo?.value,
       generateTitle: (data: any) => `Website.com — ${data?.doc?.title?.value}`,
       generateURL: ({ doc, locale }: any) =>
         `https://yoursite.com/${locale ? locale + '/' : ''}${doc?.slug?.value || ''}`,

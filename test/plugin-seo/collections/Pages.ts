@@ -33,6 +33,11 @@ export const Pages: CollectionConfig = {
               type: 'text',
             },
             {
+              name: 'photo',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
               name: 'slug',
               type: 'text',
               required: true,

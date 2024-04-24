@@ -10,6 +10,7 @@ import type { Config, Page as PayloadPage } from './payload-types.js'
 import { ensureAutoLoginAndCompilationIsDone, initPageConsoleErrorCatch } from '../helpers.js'
 import { AdminUrlUtil } from '../helpers/adminUrlUtil.js'
 import { initPayloadE2ENoConfig } from '../helpers/initPayloadE2ENoConfig.js'
+import { POLL_TOPASS_TIMEOUT } from '../playwright.config.js'
 import { mediaSlug } from './shared.js'
 
 const filename = fileURLToPath(import.meta.url)
@@ -20,6 +21,8 @@ const { beforeAll, describe } = test
 let url: AdminUrlUtil
 let page: Page
 let id: string
+
+let mediaDocSecond: Media
 
 describe('SEO Plugin', () => {
   beforeAll(async ({ browser }) => {
@@ -33,22 +36,33 @@ describe('SEO Plugin', () => {
     const filePath = path.resolve(dirname, './image-1.jpg')
     const file = await getFileByPath(filePath)
 
+    const fileSecondPath = path.resolve(dirname, './image-2.jpg')
+    const fileSecond = await getFileByPath(fileSecondPath)
+
     const mediaDoc = await payload.create({
       collection: mediaSlug,
       data: {},
       file,
     })
 
+    mediaDocSecond = await payload.create({
+      collection: mediaSlug,
+      data: {},
+      file: fileSecond,
+    })
+
     const createdPage = (await payload.create({
       collection: 'pages',
       data: {
         slug: 'test-page',
+        photo: mediaDocSecond.id,
         meta: {
           description: 'This is a test meta description',
           image: mediaDoc.id,
           ogTitle: 'This is a custom og:title field',
           title: 'This is a test meta title',
         },
+
         title: 'Test Page',
       },
     })) as unknown as PayloadPage
@@ -68,7 +82,8 @@ describe('SEO Plugin', () => {
 
     test('Should auto-generate meta title when button is clicked in tabs', async () => {
       const contentTabsClass = '.tabs-field__tabs .tabs-field__tab-button'
-      const autoGenerateButtonClass = '.group-field__wrap .render-fields div:nth-of-type(1) button'
+      const autoGenerateTitleButtonClass =
+        '.group-field__wrap .render-fields div:nth-of-type(1) button'
       const metaTitleClass = '#field-meta__title'
 
       const secondTab = page.locator(contentTabsClass).nth(1)
@@ -78,11 +93,27 @@ describe('SEO Plugin', () => {
 
       await expect(metaTitle).toHaveValue('This is a test meta title')
 
-      const autoGenButton = page.locator(autoGenerateButtonClass).nth(0)
-      await expect(autoGenButton).toContainText('Auto-generate')
-      await autoGenButton.click()
+      const autoGenTitleButton = page.locator(autoGenerateTitleButtonClass).nth(0)
+      await expect(autoGenTitleButton).toContainText('Auto-generate')
+      await autoGenTitleButton.click()
 
       await expect(metaTitle).toHaveValue('Website.com — Test Page')
+
+      const autoGenerateImageButtonClass =
+        '.group-field__wrap .render-fields div:nth-of-type(3) button'
+      const autoGenImageButton = page.locator(autoGenerateImageButtonClass).nth(0)
+      await expect(autoGenImageButton).toContainText('Auto-generate')
+      await autoGenTitleButton.click()
+
+      const generatedImage = page.locator(
+        '.group-field__wrap .render-fields div:nth-of-type(3) img',
+      )
+
+      const generatedImageSrc = await generatedImage.getAttribute('src')
+
+      await expect(() => {
+        expect(generatedImageSrc).toBe(mediaDocSecond.url)
+      }).toPass({ timeout: POLL_TOPASS_TIMEOUT })
     })
 
     // todo: Re-enable this test once required attributes are fixed
