@@ -61,9 +61,7 @@ export default buildConfigWithDefaults({
         return `Generate me SEO meta description with this content - ${value} `
       },
       generateTitle: (data: any) => `Website.com — ${data?.doc?.title?.value}`,
-      generateTitleAi: (data: any) => {
-        return `Generate me SEO meta title with this content - Website.com — ${data?.doc?.title?.value}`
-      },
+      generateImage: (data: any) => data.doc?.photo?.value,
       generateURL: ({ doc, locale }: any) =>
         `https://yoursite.com/${locale ? locale + '/' : ''}${doc?.slug?.value || ''}`,
       openaiApiKey: 'some key',
