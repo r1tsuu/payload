@@ -1,6 +1,7 @@
 import payload from '../../packages/payload/src'
 import { devUser } from '../credentials'
 import { initPayloadTest } from '../helpers/configHelpers'
+import { localizedSlug } from './collections/Localized'
 import { postsSlug } from './collections/Posts'
 
 require('isomorphic-fetch')
@@ -68,5 +69,67 @@ describe('_Community Tests', () => {
     }).then((res) => res.json())
 
     expect(newPost.doc.text).toEqual('REST API EXAMPLE')
+  })
+
+  it('should prorly work localized group field', async () => {
+    const result = await payload.create({
+      collection: localizedSlug,
+      locale: 'en',
+      data: {
+        groupLocalized: {
+          title: 'hello en',
+        },
+      },
+    })
+
+    expect(result.groupLocalized.title).toBe('hello en')
+
+    await payload.update({
+      collection: localizedSlug,
+      locale: 'de',
+      id: result.id,
+      data: {
+        groupLocalized: {
+          title: 'hello de',
+        },
+      },
+    })
+
+    const docEn = await payload.findByID({ collection: localizedSlug, locale: 'en', id: result.id })
+    const docDe = await payload.findByID({ collection: localizedSlug, locale: 'de', id: result.id })
+
+    expect(docEn.groupLocalized.title).toBe('hello en')
+    expect(docDe.groupLocalized.title).toBe('hello de')
+  })
+
+  it('should prorly work localizde field inside of group', async () => {
+    const result = await payload.create({
+      collection: localizedSlug,
+      locale: 'en',
+      data: {
+        group: {
+          title: 'hello en',
+        },
+      },
+    })
+
+    // expect(result.group.title).toBe('hello en')
+
+    await payload.update({
+      collection: localizedSlug,
+      locale: 'de',
+      id: result.id,
+      data: {
+        group: {
+          title: 'hello de',
+        },
+      },
+    })
+
+    const docEn = await payload.findByID({ collection: localizedSlug, locale: 'en', id: result.id })
+    const docDe = await payload.findByID({ collection: localizedSlug, locale: 'de', id: result.id })
+
+    expect(docEn.group.title).toBe('hello en')
+    expect(docDe.group.title).toBe('hello de')
   })
 })

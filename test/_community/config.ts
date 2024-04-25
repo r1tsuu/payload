@@ -1,5 +1,6 @@
 import { buildConfigWithDefaults } from '../buildConfigWithDefaults'
 import { devUser } from '../credentials'
+import { Localized, localizedSlug } from './collections/Localized'
 import { MediaCollection } from './collections/Media'
 import { PostsCollection, postsSlug } from './collections/Posts'
 import { MenuGlobal } from './globals/Menu'
@@ -9,8 +10,13 @@ export default buildConfigWithDefaults({
   collections: [
     PostsCollection,
     MediaCollection,
+    Localized,
     // ...add more collections here
   ],
+  localization: {
+    locales: ['de', 'en'],
+    defaultLocale: 'en',
+  },
   globals: [
     MenuGlobal,
     // ...add more globals here
