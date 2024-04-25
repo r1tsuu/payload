@@ -1,10 +1,12 @@
-import type { PayloadRequest } from '../types/index.js'
+import type { User } from '../auth/index.js'
+import type { PayloadRequestWithData } from '../types/index.js'
 
 import { deepCopyObject } from '../utilities/deepCopyObject.js'
 
 type Args = {
   defaultValue: unknown
-  req: PayloadRequest
+  locale: string | undefined
+  user: PayloadRequestWithData['user']
   value?: unknown
 }
 

@@ -1,7 +1,7 @@
 import type { Config } from 'payload/config'
 import type { Field, GroupField, TabsField, TextField } from 'payload/types'
 
-import OpenAI from 'openai'
+import { addDataAndFileToRequest } from '@payloadcms/next/utilities'
 import { deepMerge } from 'payload/utilities'
 import React from 'react'
 
@@ -207,8 +207,9 @@ const seo =
         ...(config.endpoints ?? []),
         {
           handler: async (req) => {
+            const reqWithData = await addDataAndFileToRequest({ request: req })
             const args: Parameters<GenerateTitle>[0] =
-              req.data as unknown as Parameters<GenerateTitle>[0]
+              reqWithData.data as unknown as Parameters<GenerateTitle>[0]
             const result = pluginConfig.generateTitle ? await pluginConfig.generateTitle(args) : ''
             return new Response(JSON.stringify({ result }), { status: 200 })
           },
@@ -242,8 +243,9 @@ const seo =
         },
         {
           handler: async (req) => {
+            const reqWithData = await addDataAndFileToRequest({ request: req })
             const args: Parameters<GenerateDescription>[0] =
-              req.data as unknown as Parameters<GenerateDescription>[0]
+              reqWithData.data as unknown as Parameters<GenerateDescription>[0]
             const result = pluginConfig.generateDescription
               ? await pluginConfig.generateDescription(args)
               : ''
@@ -279,8 +281,9 @@ const seo =
         },
         {
           handler: async (req) => {
+            const reqWithData = await addDataAndFileToRequest({ request: req })
             const args: Parameters<GenerateURL>[0] =
-              req.data as unknown as Parameters<GenerateURL>[0]
+              reqWithData.data as unknown as Parameters<GenerateURL>[0]
             const result = pluginConfig.generateURL ? await pluginConfig.generateURL(args) : ''
             return new Response(JSON.stringify({ result }), { status: 200 })
           },
@@ -289,8 +292,9 @@ const seo =
         },
         {
           handler: async (req) => {
+            const reqWithData = await addDataAndFileToRequest({ request: req })
             const args: Parameters<GenerateImage>[0] =
-              req.data as unknown as Parameters<GenerateImage>[0]
+              reqWithData.data as unknown as Parameters<GenerateImage>[0]
             const result = pluginConfig.generateImage ? await pluginConfig.generateImage(args) : ''
             return new Response(JSON.stringify({ result }), { status: 200 })
           },
