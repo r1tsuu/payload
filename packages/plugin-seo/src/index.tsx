@@ -223,8 +223,10 @@ const seo =
                 status: 500,
               })
 
+            const reqWithData = await addDataAndFileToRequest({ request: req })
+
             const args: Parameters<GenerateTitle>[0] =
-              req.data as unknown as Parameters<GenerateTitle>[0]
+              reqWithData.data as unknown as Parameters<GenerateTitle>[0]
 
             const content = pluginConfig.generateTitleAi
               ? await pluginConfig.generateTitleAi(args)
@@ -261,8 +263,10 @@ const seo =
                 status: 500,
               })
 
+            const reqWithData = await addDataAndFileToRequest({ request: req })
+
             const args: Parameters<GenerateDescription>[0] =
-              req.data as unknown as Parameters<GenerateDescription>[0]
+              reqWithData.data as unknown as Parameters<GenerateDescription>[0]
 
             const content = pluginConfig.generateDescriptionAi
               ? await pluginConfig.generateDescriptionAi(args)
