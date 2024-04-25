@@ -45,7 +45,7 @@
     "payload": "../payload",
     "@payloadcms/translations": "../translations",
     "@payloadcms/ui": "../ui",
-    "@payloadcms/next": "workspace:*",
+    "@payloadcms/next": "../next",
     "react": "^18.0.0",
     "openai": "^4.30.0"
   },
