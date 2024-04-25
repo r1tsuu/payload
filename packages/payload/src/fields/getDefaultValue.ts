@@ -6,7 +6,7 @@ import { deepCopyObject } from '../utilities/deepCopyObject.js'
 type Args = {
   defaultValue: unknown
   locale: string | undefined
-  user: PayloadRequestWithData['user']
+  req: PayloadRequestWithData
   value?: unknown
 }
 
