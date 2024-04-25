@@ -1189,7 +1189,7 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-payload
       '@payloadcms/next':
-        specifier: workspace:*
+        specifier: ../next
         version: link:../next
       '@payloadcms/translations':
         specifier: ../translations
