@@ -1,25 +1,39 @@
-import path from 'path'
-import { getFileByPath } from 'payload/uploads'
-import { fileURLToPath } from 'url'
+import { randomBytes } from 'crypto'
+import { sql } from 'drizzle-orm'
 
 import { buildConfigWithDefaults } from '../buildConfigWithDefaults.js'
 import { devUser } from '../credentials.js'
-import { MediaCollection } from './collections/Media/index.js'
-import { PostsCollection, postsSlug } from './collections/Posts/index.js'
+import { PostsCollection } from './collections/Posts/index.js'
 import { MenuGlobal } from './globals/Menu/index.js'
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+
+export const chunkArray = <T>(array: T[], length: number): T[][] => {
+  return Array.from({ length: Math.ceil(array.length / length) }, (_, i) =>
+    array.slice(i * length, i * length + length),
+  )
+}
+
+const fields = [
+  'title',
+  'label',
+  'author',
+  'name',
+  'link',
+  'slug',
+  'country',
+  'city',
+  'description',
+]
 
 export default buildConfigWithDefaults({
   // ...extend config here
   collections: [
     PostsCollection,
-    // MediaCollection
+    {
+      slug: 'tests',
+      fields: fields.map((name) => ({ name, type: 'text' })),
+    },
   ],
-  globals: [
-    MenuGlobal,
-    // ...add more globals here
-  ],
+  globals: [MenuGlobal],
   cors: ['http://localhost:3000', 'http://localhost:3001'],
   onInit: async (payload) => {
     await payload.create({
@@ -30,21 +44,23 @@ export default buildConfigWithDefaults({
       },
     })
 
-    await payload.create({
-      collection: postsSlug,
-      data: {
-        text: 'example post',
-      },
-    })
+    const arr: string[] = Array(2000000).fill('_')
 
-    // // Create image
-    // const imageFilePath = path.resolve(dirname, '../uploads/image.png')
-    // const imageFile = await getFileByPath(imageFilePath)
+    const chunkSize = 5000
 
-    // await payload.create({
-    //   collection: 'media',
-    //   data: {},
-    //   file: imageFile,
-    // })
+    const chunked = chunkArray(arr, chunkSize)
+
+    for (const chunk of chunked) {
+      const values = chunk.map(() => fields.map(() => randomBytes(20).toString('hex')))
+
+      let query = `insert into tests (${fields.join(', ')}) values`
+
+      for (let i = 0; i < values.length; i++) {
+        const value = values[i]
+        query += `    (${value.map((each) => `'${each}'`).join(', ')})${i === values.length - 1 ? ';' : ',\n'}`
+      }
+
+      await payload.db.drizzle.execute(sql.raw(query))
+    }
   },
 })
