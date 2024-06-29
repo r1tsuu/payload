@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
+    "url": "https://github.com/r1tsuu/payload",
     "directory": "packages/payload"
   },
   "license": "MIT",
