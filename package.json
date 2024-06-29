@@ -1,0 +1,77 @@
+{
+  "name": "@payloadcms/translations",
+  "version": "3.0.0-beta.56",
+  "homepage": "https://payloadcms.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/payloadcms/payload.git",
+    "directory": "packages/translations"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/exports/index.js",
+      "types": "./dist/exports/index.d.ts",
+      "default": "./dist/exports/index.js"
+    },
+    "./all": {
+      "import": "./dist/exports/all.js",
+      "types": "./dist/exports/all.d.ts",
+      "default": "./dist/exports/all.js"
+    },
+    "./languages/*": {
+      "import": "./dist/languages/*.js",
+      "types": "./dist/languages/*.d.ts",
+      "default": "./dist/languages/*.js"
+    }
+  },
+  "main": "./dist/exports/index.js",
+  "types": "./dist/exports/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm build:types",
+    "build:types": "tsc --outDir dist",
+    "clean": "rimraf {dist,*.tsbuildinfo}",
+    "prepublishOnly": "pnpm clean && pnpm turbo build",
+    "translateNewKeys": "tsx scripts/translateNewKeys/run.ts"
+  },
+  "dependencies": {
+    "date-fns": "3.3.1"
+  },
+  "devDependencies": {
+    "@payloadcms/eslint-config": "workspace:*",
+    "@swc/core": "^1.6.1",
+    "@types/react": "npm:types-react@19.0.0-beta.2",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
+    "dotenv": "16.4.5",
+    "prettier": "^3.0.3",
+    "typescript": "5.5.2"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "import": "./dist/exports/index.js",
+        "types": "./dist/exports/index.d.ts",
+        "default": "./dist/exports/index.js"
+      },
+      "./all": {
+        "import": "./dist/exports/all.js",
+        "types": "./dist/exports/all.d.ts",
+        "default": "./dist/exports/all.js"
+      },
+      "./languages/*": {
+        "import": "./dist/languages/*.js",
+        "types": "./dist/languages/*.d.ts",
+        "default": "./dist/languages/*.js"
+      }
+    },
+    "main": "./dist/exports/index.js",
+    "types": "./dist/exports/index.d.ts"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-beta.2",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2"
+  }
+}
