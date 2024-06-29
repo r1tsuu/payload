@@ -1,0 +1,99 @@
+import executeAccess from '../../auth/executeAccess.js';
+import { afterRead } from '../../fields/hooks/afterRead/index.js';
+import { commitTransaction } from '../../utilities/commitTransaction.js';
+import { initTransaction } from '../../utilities/initTransaction.js';
+import { killTransaction } from '../../utilities/killTransaction.js';
+import replaceWithDraftIfAvailable from '../../versions/drafts/replaceWithDraftIfAvailable.js';
+export const findOneOperation = async (args)=>{
+    const { slug, depth, draft: draftEnabled = false, globalConfig, overrideAccess = false, req: { fallbackLocale, locale }, req, showHiddenFields } = args;
+    try {
+        const shouldCommit = await initTransaction(req);
+        // /////////////////////////////////////
+        // Retrieve and execute access
+        // /////////////////////////////////////
+        let accessResult;
+        if (!overrideAccess) {
+            accessResult = await executeAccess({
+                req
+            }, globalConfig.access.read);
+        }
+        // /////////////////////////////////////
+        // Perform database operation
+        // /////////////////////////////////////
+        let doc = await req.payload.db.findGlobal({
+            slug,
+            locale,
+            req,
+            where: overrideAccess ? undefined : accessResult
+        });
+        if (!doc) {
+            doc = {};
+        }
+        // /////////////////////////////////////
+        // Replace document with draft if available
+        // /////////////////////////////////////
+        if (globalConfig.versions?.drafts && draftEnabled) {
+            doc = await replaceWithDraftIfAvailable({
+                accessResult,
+                doc,
+                entity: globalConfig,
+                entityType: 'global',
+                overrideAccess,
+                req
+            });
+        }
+        // /////////////////////////////////////
+        // Execute before global hook
+        // /////////////////////////////////////
+        await globalConfig.hooks.beforeRead.reduce(async (priorHook, hook)=>{
+            await priorHook;
+            doc = await hook({
+                context: req.context,
+                doc,
+                global: globalConfig,
+                req
+            }) || doc;
+        }, Promise.resolve());
+        // /////////////////////////////////////
+        // Execute field-level hooks and access
+        // /////////////////////////////////////
+        doc = await afterRead({
+            collection: null,
+            context: req.context,
+            depth,
+            doc,
+            draft: draftEnabled,
+            fallbackLocale,
+            global: globalConfig,
+            locale,
+            overrideAccess,
+            req,
+            showHiddenFields
+        });
+        // /////////////////////////////////////
+        // Execute after global hook
+        // /////////////////////////////////////
+        await globalConfig.hooks.afterRead.reduce(async (priorHook, hook)=>{
+            await priorHook;
+            doc = await hook({
+                context: req.context,
+                doc,
+                global: globalConfig,
+                req
+            }) || doc;
+        }, Promise.resolve());
+        // /////////////////////////////////////
+        // Return results
+        // /////////////////////////////////////
+        if (shouldCommit) await commitTransaction(req);
+        // /////////////////////////////////////
+        // Return results
+        // /////////////////////////////////////
+        return doc;
+    } catch (error) {
+        await killTransaction(req);
+        throw error;
+    }
+};
+
+//# sourceMappingURL=findOne.js.map

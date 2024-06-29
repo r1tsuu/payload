@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/admin/forms/Error.ts"],"sourcesContent":["export type ErrorProps = {\n  CustomError?: React.ReactNode\n  alignCaret?: 'center' | 'left' | 'right'\n  message?: string\n  path?: string\n  showError?: boolean\n}\n"],"names":[],"mappings":"AAAA,WAMC"}

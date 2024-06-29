@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/admin/elements/SaveButton.ts"],"sourcesContent":["import type { CustomComponent } from '../../config/types.js'\n\nexport type CustomSaveButton = CustomComponent\n"],"names":[],"mappings":"AAEA,WAA8C"}

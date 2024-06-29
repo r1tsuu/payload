@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/utilities/overwriteMerge.ts"],"sourcesContent":["const overwriteMerge = (_, sourceArray) => sourceArray\n\nexport default overwriteMerge\n"],"names":["overwriteMerge","_","sourceArray"],"mappings":"AAAA,MAAMA,iBAAiB,CAACC,GAAGC,cAAgBA;AAE3C,eAAeF,eAAc"}

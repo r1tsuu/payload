@@ -1,0 +1,1 @@
+{"version":3,"file":"access.d.ts","sourceRoot":"","sources":["../../../src/auth/operations/access.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,sBAAsB,EAAE,MAAM,sBAAsB,CAAA;AAClE,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,aAAa,CAAA;AAQ9C,KAAK,SAAS,GAAG;IACf,GAAG,EAAE,sBAAsB,CAAA;CAC5B,CAAA;AAED,eAAO,MAAM,eAAe,SAAgB,SAAS,KAAG,OAAO,CAAC,WAAW,CAc1E,CAAA"}

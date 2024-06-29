@@ -1,0 +1,9 @@
+import httpStatus from 'http-status';
+import { APIError } from './APIError.js';
+export class InvalidConfiguration extends APIError {
+    constructor(message){
+        super(message, httpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
+//# sourceMappingURL=InvalidConfiguration.js.map

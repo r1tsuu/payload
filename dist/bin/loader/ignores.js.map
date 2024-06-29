@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/bin/loader/ignores.ts"],"sourcesContent":["export const specifiersToIgnore = ['server-only']\n"],"names":["specifiersToIgnore"],"mappings":"AAAA,OAAO,MAAMA,qBAAqB;IAAC;CAAc,CAAA"}
