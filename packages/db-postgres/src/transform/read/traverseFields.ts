@@ -520,6 +520,10 @@ export const traverseFields = <T extends Record<string, unknown>>({
           }
 
           case 'date': {
+            if (fieldData instanceof Date) {
+              val = fieldData.toISOString()
+            }
+
             if (typeof fieldData === 'string') {
               val = new Date(fieldData).toISOString()
             }
