@@ -1,0 +1,1 @@
+{"version":3,"file":"numberColumnMap.d.ts","sourceRoot":"","sources":["../../src/schema/numberColumnMap.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,qBAAqB,CAAA;AAC1D,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,SAAS,CAAA;AAI1C,KAAK,iBAAiB,GAAG,WAAW,CAAC,WAAW,CAAC,QAAQ,CAAC,CAAC,CAAA;AAE3D,eAAO,MAAM,eAAe,EAAE,MAAM,CAAC,iBAAiB,EAAE,CAAC,IAAI,EAAE,MAAM,KAAK,eAAe,CAOxF,CAAA"}
