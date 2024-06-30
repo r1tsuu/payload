@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/exports/migration-utils.ts"],"sourcesContent":["export { migratePostgresV2toV3 } from '../predefinedMigrations/v2-v3/index.js'\n"],"names":["migratePostgresV2toV3"],"mappings":"AAAA,SAASA,qBAAqB,QAAQ,yCAAwC"}
