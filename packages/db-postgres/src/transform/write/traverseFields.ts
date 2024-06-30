@@ -550,6 +550,10 @@ export const traverseFields = ({
             formattedValue = new Date().toISOString()
           }
 
+          if (field.type === 'date' && typeof value === 'string') {
+            formattedValue = new Date(value)
+          }
+
           if (localeKey) {
             ref[localeKey][fieldName] = formattedValue
           } else {

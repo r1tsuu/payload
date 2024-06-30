@@ -9,6 +9,7 @@
 export interface Config {
   collections: {
     posts: Post;
+    tests: Test;
     users: User;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -27,7 +28,7 @@ export interface Config {
  * via the `definition` "posts".
  */
 export interface Post {
-  id: string;
+  id: number;
   text?: string | null;
   richText?: {
     root: {
@@ -65,10 +66,37 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tests".
+ */
+export interface Test {
+  id: number;
+  default?: string | null;
+  real?: number | null;
+  virtualField?: string | null;
+  select?: ('some' | 'asd') | null;
+  blocks?:
+    | {
+        text?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'some';
+      }[]
+    | null;
+  arr?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -85,10 +113,10 @@ export interface User {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -108,7 +136,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -119,7 +147,7 @@ export interface PayloadMigration {
  * via the `definition` "menu".
  */
 export interface Menu {
-  id: string;
+  id: number;
   globalText?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -129,7 +157,7 @@ export interface Menu {
  * via the `definition` "custom-ts".
  */
 export interface CustomT {
-  id: string;
+  id: number;
   custom?: 'hello' | 'world';
   withDefintionsUsage?: ObjectWithNumber[];
   json: {
@@ -150,6 +178,6 @@ export interface ObjectWithNumber {
 
 
 declare module 'payload' {
-  // @ts-ignore
+  // @ts-ignore 
   export interface GeneratedTypes extends Config {}
 }
