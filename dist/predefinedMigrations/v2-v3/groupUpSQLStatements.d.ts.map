@@ -1,0 +1,1 @@
+{"version":3,"file":"groupUpSQLStatements.d.ts","sourceRoot":"","sources":["../../../src/predefinedMigrations/v2-v3/groupUpSQLStatements.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,MAAM,GACd,WAAW,GACX,eAAe,GACf,YAAY,GACZ,gBAAgB,GAChB,WAAW,GACX,SAAS,CAAA;AAgBb,eAAO,MAAM,oBAAoB,SAAU,MAAM,EAAE,KAAG,MAAM,CAAC,MAAM,EAAE,MAAM,EAAE,CAmD5E,CAAA"}

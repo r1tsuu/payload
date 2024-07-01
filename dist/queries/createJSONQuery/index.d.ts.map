@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/queries/createJSONQuery/index.ts"],"names":[],"mappings":"AAmDA,KAAK,IAAI,GAAG;IACV,QAAQ,EAAE,MAAM,CAAA;IAChB,YAAY,EAAE,MAAM,EAAE,CAAA;IACtB,YAAY,CAAC,EAAE,MAAM,EAAE,CAAA;IACvB,gBAAgB,CAAC,EAAE,OAAO,CAAA;IAC1B,KAAK,EAAE,OAAO,CAAA;CACf,CAAA;AAED,eAAO,MAAM,eAAe,uEAMzB,IAAI,KAAG,MAqBT,CAAA"}
