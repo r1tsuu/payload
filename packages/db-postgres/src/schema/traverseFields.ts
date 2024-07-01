@@ -232,7 +232,7 @@ export const traverseFields = ({
       case 'date': {
         targetTable[fieldName] = withDefault(
           timestamp(columnName, {
-            mode: 'date',
+            mode: 'string',
             precision: 3,
             withTimezone: true,
           }),
