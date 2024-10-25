@@ -876,47 +876,53 @@ describe('Relationships', () => {
       })
 
       it('should allow querying several times, one and two level deep', async () => {
-        let query
-        const now = Date.now()
-        for (let i = 0; i < 100; i++) {
-          query = await payload.find({
-            collection: 'chained',
-            where: {
-              and: [
-                {
-                  'relation.name': {
-                    equals: 'second',
+        let f = 0
+        for (let b = 0; b < 10; b++) {
+          let query
+          const now = Date.now()
+          for (let i = 0; i < 100; i++) {
+            query = await payload.find({
+              collection: 'chained',
+              where: {
+                and: [
+                  {
+                    'relation.name': {
+                      equals: 'second',
+                    },
                   },
-                },
-                {
-                  'relation.relation.name': {
-                    equals: 'third',
+                  {
+                    'relation.relation.name': {
+                      equals: 'third',
+                    },
                   },
-                },
-                {
-                  'relation.relation.name': {
-                    like: 'third',
+                  {
+                    'relation.relation.name': {
+                      like: 'third',
+                    },
                   },
-                },
-                {
-                  'relation.relation.name': {
-                    exists: true,
+                  {
+                    'relation.relation.name': {
+                      exists: true,
+                    },
                   },
-                },
-                {
-                  'relation.relation.name': {
-                    not_equals: 'third1',
+                  {
+                    'relation.relation.name': {
+                      not_equals: 'third1',
+                    },
                   },
-                },
-              ],
-            },
-          })
+                ],
+              },
+            })
+          }
+
+          payload.logger.info(`Benchmark ${b + 1} end, execution time: ${Date.now() - now}MS`)
+          f += Date.now() - now
+
+          expect(query.docs).toHaveLength(1)
+          expect(query.docs[0].id).toStrictEqual(firstLevelID)
         }
 
-        payload.logger.info(`Benchmark end, execution time: ${Date.now() - now}MS`)
-
-        expect(query.docs).toHaveLength(1)
-        expect(query.docs[0].id).toStrictEqual(firstLevelID)
+        payload.logger.info(`Full ${f}MS, Average: ${f / 10}MS`)
       })
 
       it('should allow querying within array nesting', async () => {
